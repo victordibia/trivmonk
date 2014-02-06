@@ -1,5 +1,23 @@
 <?php
 
+ // Set Credentials if we are on website Azure
+if (preg_match('/^(127.0.0.1|localhost|desktop|laptop)$/i', $_SERVER['SERVER_NAME'])) {
+    // this is for local host
+	$hostname_conndenvycom = "localhost";
+	$database_conndenvycom = "trivmonkey";
+	$username_conndenvycom = "root";
+	$password_conndenvycom = "";
+	$conndenvycom = mysql_pconnect($hostname_conndenvycom, $username_conndenvycom, $password_conndenvycom) or trigger_error(mysql_error(),E_USER_ERROR); 
+} else {
+    // this is for my web host
+	$hostname_conndenvycom = "ap-cdbr-azure-east-b.cloudapp.net";
+	$database_conndenvycom = "trivmonkey";
+	$username_conndenvycom = "b8319ad67ec4d2";
+	$password_conndenvycom = "0552d3aa";
+	$conndenvycom = mysql_pconnect($hostname_conndenvycom, $username_conndenvycom, $password_conndenvycom) or trigger_error(mysql_error(),E_USER_ERROR); 
+} // if
+
+
 return array(
 
 	/*
@@ -54,14 +72,15 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'trivmonkey',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => $hostname_conndenvycom,
+			'database'  => $database_conndenvycom,
+			'username'  => $username_conndenvycom ,
+			'password'  => $password_conndenvycom,
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
