@@ -1,5 +1,5 @@
 <?php
-
+if (isset($_SERVER['SERVER_NAME'])){
  // Set Credentials if we are on website Azure
 if (preg_match('/^(127.0.0.1|localhost|desktop|laptop)$/i', $_SERVER['SERVER_NAME'])) {
     // this is for local host
@@ -16,7 +16,14 @@ if (preg_match('/^(127.0.0.1|localhost|desktop|laptop)$/i', $_SERVER['SERVER_NAM
 	$password_conndenvycom = "0552d3aa";
 	$conndenvycom = mysql_pconnect($hostname_conndenvycom, $username_conndenvycom, $password_conndenvycom) or trigger_error(mysql_error(),E_USER_ERROR); 
 } // if
-
+} else {
+	
+	 // this is for local host
+	$hostname_conndenvycom = "localhost";
+	$database_conndenvycom = "trivmonkey";
+	$username_conndenvycom = "root";
+	$password_conndenvycom = "";
+	}
 
 return array(
 

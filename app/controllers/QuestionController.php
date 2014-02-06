@@ -1,7 +1,10 @@
 <?php
 
+
+
 class QuestionController extends \BaseController {
 
+		 
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -57,17 +60,25 @@ class QuestionController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 *
+	 * parameters passed may be category or subcategoryid
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
+		$dataversion = 1 ;
 		
+		if ( Request::get('category') )
+    {
+		 
+         $subcategoryid = Request::get('category');
+		 $questions = Question::where('categoryid','=', $subcategoryid )->take($id)->get();
+    } else	
 		if ( Request::get('subcategory') )
     {
-        $subcategoryid = Request::get('subcategory');
-		 $questions = Question::where('subcategory','=', $subcategoryid )->take($id)->get();
+		 
+         $subcategoryid = Request::get('subcategory');
+		 $questions = Question::where('subcategoryid','=', $subcategoryid )->take($id)->get();
     } else {
 		// Make sure current user owns the requested resource
     $questions = Question::all()->take($id); //$questions = Question::all(); ;
@@ -76,6 +87,7 @@ class QuestionController extends \BaseController {
  
     return Response::json(array(
         'error' => false,
+		'version' => $dataversion  ,
         'question' => $questions->toArray()),
         200
     );
