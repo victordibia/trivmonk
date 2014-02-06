@@ -1,4 +1,7 @@
-## Laravel PHP Framework
+## TrivMonk Backend API is developed using the Laravel PHP Framework
+
+Developed by Victor Dibia
+Founder / Lead Developer, Denvycom
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
 
