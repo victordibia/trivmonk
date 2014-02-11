@@ -35,4 +35,13 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function()
 	  Route::resource('category', 'CategoryController');
 	  Route::resource('subcategory', 'SubcategoryController');
 });
+
+// Api withouhtRoute group for API versioning
+Route::group(array('prefix' => 'apin/v1'), function()
+{
+    Route::resource('url', 'UrlController');
+	 Route::resource('question', 'QuestionController');
+	  Route::resource('category', 'CategoryController');
+	  Route::resource('subcategory', 'SubcategoryController');
+});
  
