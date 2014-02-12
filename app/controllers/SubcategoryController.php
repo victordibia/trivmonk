@@ -69,7 +69,7 @@ class SubcategoryController extends \BaseController {
  
     return Response::json(array(
         'error' => false,
-        'category' => $subcategory->toArray()),
+        'subcategory' => $subcategory->toArray()),
         200
     );
 	}
